@@ -2,11 +2,11 @@ import * as React from "react";
 import lodash from "lodash";
 import { Button } from "./components/button";
 import { Posts } from "./components/product-list-components";
-import logo from "./images/droppe-logo.png";
 import img1 from "./images/img1.png";
 import img2 from "./images/img2.png";
 import styles from "./shopApp.module.css";
 import { ModalProductProposal } from "./components/modalProductProposal";
+import { Header } from "./components/header";
 
 interface IProduct {
     category?: string;
@@ -100,16 +100,7 @@ export const ShopApp = () => {
 
     return (
         <React.Fragment>
-            <div className={styles.header}>
-                <div
-                    className={["container", styles.headerImageWrapper].join(
-                        " "
-                    )}
-                >
-                    <img src={logo} className={styles.headerImage} alt="logo" />
-                </div>
-            </div>
-
+            <Header />
             <>
                 <span
                     className={["container", styles.main].join(" ")}
