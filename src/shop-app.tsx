@@ -10,10 +10,21 @@ import img1 from "./images/img1.png";
 import img2 from "./images/img2.png";
 import styles from "./shopApp.module.css";
 
+interface IProduct {
+    category?: string;
+    description: string;
+    id?: number;
+    image?: string;
+    price: number | string;
+    rating?: { count: number; rate: number };
+    title: string;
+    isFavorite?: boolean;
+}
+
 export class ShopApp extends React.Component<
     {},
     {
-        products: any[];
+        products: IProduct[];
         isOpen: boolean;
         isShowingMessage: boolean;
         message: string;
