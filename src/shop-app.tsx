@@ -132,7 +132,11 @@ export class ShopApp extends React.Component<
                             styles.headerImageWrapper,
                         ].join(" ")}
                     >
-                        <img src={logo} className={styles.headerImage} />
+                        <img
+                            src={logo}
+                            className={styles.headerImage}
+                            alt="logo"
+                        />
                     </div>
                 </div>
 
@@ -148,10 +152,12 @@ export class ShopApp extends React.Component<
                         <img
                             src={img1}
                             style={{ maxHeight: "15em", display: "block" }}
+                            alt="people preparing food"
                         />
                         <img
                             src={img2}
                             style={{ maxHeight: "15rem", display: "block" }}
+                            alt="worker fixing shelve"
                         />
                     </span>
                 </>
