@@ -1,14 +1,12 @@
 import * as React from "react";
 import lodash from "lodash";
-import Modal from "react-modal";
-import { FaTimes } from "react-icons/fa";
 import { Button } from "./components/button";
 import { Posts } from "./components/product-list-components";
-import { Form } from "./components/form";
 import logo from "./images/droppe-logo.png";
 import img1 from "./images/img1.png";
 import img2 from "./images/img2.png";
 import styles from "./shopApp.module.css";
+import { ModalProductProposal } from "./components/modalProductProposal";
 
 interface IProduct {
     category?: string;
@@ -164,24 +162,11 @@ export const ShopApp = () => {
                 )}
             </div>
 
-            <>
-                <Modal
-                    isOpen={isFormOpen}
-                    className={styles.reactModalContent}
-                    overlayClassName={styles.reactModalOverlay}
-                >
-                    <div className={styles.modalContentHelper}>
-                        <div
-                            className={styles.modalClose}
-                            onClick={() => setIsFormOpen(false)}
-                        >
-                            <FaTimes />
-                        </div>
-
-                        <Form on-submit={onSubmit} />
-                    </div>
-                </Modal>
-            </>
+            <ModalProductProposal
+                isFormOpen={isFormOpen}
+                setIsFormOpen={setIsFormOpen}
+                onSubmit={onSubmit}
+            />
         </React.Fragment>
     );
 };
