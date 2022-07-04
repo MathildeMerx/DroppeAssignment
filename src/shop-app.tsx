@@ -21,12 +21,14 @@ interface IProduct {
 
 export const ShopApp = () => {
     const [products, setProducts] = React.useState<IProduct[]>([]);
+    const prodCount = products.length;
+    const numFavorites = countFavorite(products);
+
     const [isFormOpen, setIsFormOpen] = React.useState<boolean>(false);
+
     const [isShowingMessage, setIsShowingMessage] =
         React.useState<boolean>(false);
     const message = isShowingMessage ? "Adding product..." : "";
-    const [numFavorites, setNumFavorites] = React.useState<number>(0);
-    const prodCount = products.length;
 
     React.useEffect(() => {
         fetch("https://fakestoreapi.com/products").then((response) => {
@@ -53,13 +55,11 @@ export const ShopApp = () => {
         if (idx === -1) {
             return;
         }
-        const updateNumFavorite = products[idx].isFavorite ? -1 : 1;
         setProducts((products) => {
             let productsCopy = lodash.cloneDeep(products);
             productsCopy[idx].isFavorite = !products[idx].isFavorite;
             return productsCopy;
         });
-        setNumFavorites((numFavorites) => numFavorites + updateNumFavorite);
     };
 
     const onSubmit = (payload: {
@@ -169,4 +169,14 @@ export const ShopApp = () => {
             />
         </React.Fragment>
     );
+};
+
+const countFavorite = (products: IProduct[]) => {
+    let numFavorite = 0;
+    for (let i = 0; i < products.length; i++) {
+        if (products[i].isFavorite === true) {
+            numFavorite += 1;
+        }
+    }
+    return numFavorite;
 };
