@@ -1,5 +1,5 @@
 import * as React from "react";
-import styles from "../shopApp.module.css";
+import styles from "../shop-app.module.css";
 import logo from "../images/droppe-logo.png";
 
 export const Header = () => {

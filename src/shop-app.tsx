@@ -1,8 +1,8 @@
 import * as React from "react";
-import { ModalProductProposal } from "./components/modalProductProposal";
+import { ModalProductProposal } from "./components/modal-product-proposal";
 import { Header } from "./components/header";
-import { ImagesTop } from "./components/imagesTop";
-import { ProductDisplay } from "./components/productDisplay";
+import { ImagesTop } from "./components/images-top";
+import { ProductDisplay } from "./components/product-display";
 import { useShopApp } from "./useShopApp";
 
 export const ShopApp = () => {

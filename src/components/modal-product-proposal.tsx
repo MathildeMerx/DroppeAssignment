@@ -1,6 +1,6 @@
 import * as React from "react";
 import Modal from "react-modal";
-import styles from "../shopApp.module.css";
+import styles from "../shop-app.module.css";
 import { Form } from "./form";
 import { FaTimes } from "react-icons/fa";
 

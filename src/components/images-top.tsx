@@ -1,5 +1,5 @@
 import * as React from "react";
-import styles from "../shopApp.module.css";
+import styles from "../shop-app.module.css";
 import img1 from "../images/img1.png";
 import img2 from "../images/img2.png";
 
