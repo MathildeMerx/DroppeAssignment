@@ -11,15 +11,12 @@ interface IPostsProps {
 export const Posts = (props: IPostsProps) => {
     let productsarr = [];
     for (const [i, p] of props.products.entries()) {
-        productsarr.push(
-            <Product key={i} index={i} product={p} onFav={props.onFav} />
-        );
+        productsarr.push(<Product key={i} product={p} onFav={props.onFav} />);
     }
     return <div>{lodash.reverse(productsarr)}</div>;
 };
 
-export const Product: React.FC<{
-    index: number;
+interface IProductProps {
     product: {
         title: string;
         description: string;
@@ -28,7 +25,9 @@ export const Product: React.FC<{
         rating: { rate: number; count: number };
     };
     onFav: (title: string) => void;
-}> = ({ product, onFav }) => {
+}
+
+export const Product = ({ product, onFav }: IProductProps) => {
     const {
         product: productClass,
         productBody,
