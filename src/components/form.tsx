@@ -2,13 +2,13 @@ import * as React from "react";
 import { Button } from "./button";
 import styles from "./form.module.css";
 
-type IFormProps = {
+interface IFormProps {
     onSubmit: (payload: {
         title: string;
         description: string;
         price: string;
     }) => void;
-};
+}
 
 export const Form = ({ onSubmit }: IFormProps) => {
     let formRef = React.useRef<HTMLFormElement>(null);

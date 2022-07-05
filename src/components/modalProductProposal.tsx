@@ -4,7 +4,7 @@ import styles from "../shopApp.module.css";
 import { Form } from "./form";
 import { FaTimes } from "react-icons/fa";
 
-type IModalProductProposalProps = {
+interface IModalProductProposalProps {
     isFormOpen: boolean;
     setIsFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
     onSubmit: (payload: {
@@ -12,7 +12,7 @@ type IModalProductProposalProps = {
         description: string;
         price: string;
     }) => void;
-};
+}
 
 export const ModalProductProposal = ({
     isFormOpen,
