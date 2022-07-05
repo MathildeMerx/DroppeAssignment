@@ -33,7 +33,7 @@ export const ModalProductProposal = ({
                     <FaTimes />
                 </div>
 
-                <Form on-submit={onSubmit} />
+                <Form onSubmit={onSubmit} />
             </div>
         </Modal>
     );
