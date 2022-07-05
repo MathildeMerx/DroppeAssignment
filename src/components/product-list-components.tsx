@@ -9,11 +9,11 @@ interface IPostsProps {
 }
 
 export const Posts = (props: IPostsProps) => {
-    let productsarr = [];
+    let productsArray = [];
     for (const [i, p] of props.products.entries()) {
-        productsarr.push(<Product key={i} product={p} onFav={props.onFav} />);
+        productsArray.push(<Product key={i} product={p} onFav={props.onFav} />);
     }
-    return <div>{lodash.reverse(productsarr)}</div>;
+    return <div>{lodash.reverse(productsArray)}</div>;
 };
 
 interface IProductProps {
