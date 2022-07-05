@@ -2,7 +2,7 @@ import * as React from "react";
 import { Button } from "./button";
 import { Posts } from "./product-list-components";
 import styles from "../shopApp.module.css";
-import { IProduct } from "../shop-app";
+import { IProduct } from "../useShopApp";
 
 const countFavorite = (products: IProduct[]) => {
     let numFavorite = 0;
