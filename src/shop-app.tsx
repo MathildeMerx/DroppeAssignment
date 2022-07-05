@@ -5,6 +5,8 @@ import { Header } from "./components/header";
 import { ImagesTop } from "./components/imagesTop";
 import { ProductDisplay } from "./components/productDisplay";
 
+const messageText = "Adding product...";
+
 export interface IProduct {
     category?: string;
     description: string;
@@ -26,9 +28,7 @@ export const ShopApp = () => {
 
     const [products, setProducts] = React.useState<IProduct[]>([]);
 
-    const [isShowingMessage, setIsShowingMessage] =
-        React.useState<boolean>(false);
-    const message = isShowingMessage ? "Adding product..." : "";
+    const [message, setMessage] = React.useState<string>("");
 
     React.useEffect(() => {
         fetch("https://fakestoreapi.com/products").then((response) => {
@@ -75,7 +75,7 @@ export const ShopApp = () => {
         });
 
         setIsFormOpen(false);
-        setIsShowingMessage(true);
+        setMessage(messageText);
 
         // **this POST request doesn't actually post anything to any database**
         fetch("https://fakestoreapi.com/products", {
@@ -89,7 +89,7 @@ export const ShopApp = () => {
             .then((res) => res.json())
             .then((json) => {
                 (() => {
-                    setTimeout(() => setIsShowingMessage(false), 2000);
+                    setTimeout(() => setMessage(""), 2000);
                 })();
             });
     };
