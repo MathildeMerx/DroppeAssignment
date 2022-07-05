@@ -1,13 +1,11 @@
 import * as React from "react";
 import lodash from "lodash";
-import { Button } from "./components/button";
-import { Posts } from "./components/product-list-components";
-import styles from "./shopApp.module.css";
 import { ModalProductProposal } from "./components/modalProductProposal";
 import { Header } from "./components/header";
 import { ImagesTop } from "./components/imagesTop";
+import { ProductDisplay } from "./components/productDisplay";
 
-interface IProduct {
+export interface IProduct {
     category?: string;
     description: string;
     id?: number;
@@ -19,11 +17,14 @@ interface IProduct {
 }
 
 export const ShopApp = () => {
-    const [products, setProducts] = React.useState<IProduct[]>([]);
-    const prodCount = products.length;
-    const numFavorites = countFavorite(products);
-
     const [isFormOpen, setIsFormOpen] = React.useState<boolean>(false);
+    const onClickButton = () => setIsFormOpen(true);
+
+    React.useEffect(() => {
+        document.title = "Droppe refactor app";
+    }, []);
+
+    const [products, setProducts] = React.useState<IProduct[]>([]);
 
     const [isShowingMessage, setIsShowingMessage] =
         React.useState<boolean>(false);
@@ -43,10 +44,6 @@ export const ShopApp = () => {
                 setProducts(data);
             });
         });
-    }, []);
-
-    React.useEffect(() => {
-        document.title = "Droppe refactor app";
     }, []);
 
     const onClickFavorite = (title: string) => {
@@ -102,51 +99,17 @@ export const ShopApp = () => {
             <Header />
             <ImagesTop />
 
-            <div
-                className={["container", styles.main].join(" ")}
-                style={{ paddingTop: 0 }}
-            >
-                <div className={styles.buttonWrapper}>
-                    <span role="button">
-                        <Button onClick={() => setIsFormOpen(true)}>
-                            Send product proposal
-                        </Button>
-                    </span>
-                    {isShowingMessage && (
-                        <div className={styles.messageContainer}>
-                            <i>{message}</i>
-                        </div>
-                    )}
-                </div>
-
-                <div className={styles.statsContainer}>
-                    <span>Total products: {prodCount}</span>
-                    {" - "}
-                    <span>Number of favorites: {numFavorites}</span>
-                </div>
-
-                {products && !!products.length ? (
-                    <Posts products={products} onFav={onClickFavorite} />
-                ) : (
-                    <div></div>
-                )}
-            </div>
-
             <ModalProductProposal
                 isFormOpen={isFormOpen}
                 setIsFormOpen={setIsFormOpen}
                 onSubmit={onSubmit}
             />
+            <ProductDisplay
+                products={products}
+                onClickButton={onClickButton}
+                message={message}
+                onClickFavorite={onClickFavorite}
+            />
         </React.Fragment>
     );
-};
-
-const countFavorite = (products: IProduct[]) => {
-    let numFavorite = 0;
-    for (let i = 0; i < products.length; i++) {
-        if (products[i].isFavorite === true) {
-            numFavorite += 1;
-        }
-    }
-    return numFavorite;
 };
